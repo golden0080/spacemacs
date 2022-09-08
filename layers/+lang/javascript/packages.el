@@ -13,7 +13,7 @@
   '(
     coffee-mode
     company
-    (company-tern :toggle (configuration-layer/package-usedp 'company))
+    ;; (company-tern :toggle (configuration-layer/package-usedp 'company))
     evil-matchit
     flycheck
     ggtags
@@ -23,7 +23,7 @@
     js2-refactor
     json-mode
     json-snatcher
-    (tern :toggle (spacemacs//tern-detect))
+    ;; (tern :toggle (spacemacs//tern-detect))
     web-beautify
     skewer-mode
     livid-mode
@@ -42,13 +42,13 @@
 (defun javascript/post-init-company ()
   (spacemacs|add-company-hook js2-mode))
 
-(defun javascript/init-company-tern ()
-  (use-package company-tern
-    :if (and (configuration-layer/package-usedp 'company)
-             (configuration-layer/package-usedp 'tern))
-    :defer t
-    :init
-    (push 'company-tern company-backends-js2-mode)))
+;; (defun javascript/init-company-tern ()
+;;   (use-package company-tern
+;;     :if (and (configuration-layer/package-usedp 'company)
+;;              (configuration-layer/package-usedp 'tern))
+;;     :defer t
+;;     :init
+;;     (push 'company-tern company-backends-js2-mode)))
 
 (defun javascript/post-init-flycheck ()
   (dolist (mode '(coffee-mode js2-mode json-mode))
@@ -159,16 +159,16 @@
     (spacemacs/set-leader-keys-for-major-mode 'json-mode
       "hp" 'jsons-print-path)))
 
-(defun javascript/init-tern ()
-  (use-package tern
-    :defer t
-    :init (add-hook 'js2-mode-hook 'tern-mode)
-    :config
-    (progn
-      (spacemacs|hide-lighter tern-mode)
-      (when javascript-disable-tern-port-files
-        (add-to-list 'tern-command "--no-port-file" 'append))
-      (spacemacs//set-tern-key-bindings 'js2-mode))))
+;; (defun javascript/init-tern ()
+;;   (use-package tern
+;;     :defer t
+;;     :init (add-hook 'js2-mode-hook 'tern-mode)
+;;     :config
+;;     (progn
+;;       (spacemacs|hide-lighter tern-mode)
+;;       (when javascript-disable-tern-port-files
+;;         (add-to-list 'tern-command "--no-port-file" 'append))
+;;       (spacemacs//set-tern-key-bindings 'js2-mode))))
 
 (defun javascript/init-web-beautify ()
   (use-package web-beautify
