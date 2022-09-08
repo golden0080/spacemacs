@@ -13,14 +13,12 @@
       '(
         evil-magit
         fill-column-indicator
-        gitattributes-mode
-        gitconfig-mode
-        gitignore-mode
+        git-modes
         git-commit
         git-link
         git-messenger
         git-timemachine
-        (helm-gitignore :toggle (configuration-layer/package-usedp 'helm))
+        ;; (helm-gitignore :toggle (configuration-layer/package-usedp 'helm))
         magit
         magit-gitflow
         ;; not compatible with magit 2.1 at the time of release
@@ -38,10 +36,10 @@
 (defun git/post-init-fill-column-indicator ()
   (add-hook 'git-commit-mode-hook 'fci-mode))
 
-(defun git/init-helm-gitignore ()
-  (use-package helm-gitignore
-    :defer t
-    :init (spacemacs/set-leader-keys "gI" 'helm-gitignore)))
+;; (defun git/init-helm-gitignore ()
+;;   (use-package helm-gitignore
+;;     :defer t
+;;     :init (spacemacs/set-leader-keys "gI" 'helm-gitignore)))
 
 (defun git/init-git-commit ()
   (use-package git-commit
@@ -95,16 +93,8 @@
         ("Y" git-timemachine-kill-revision)
         ("q" nil :exit t)))))
 
-(defun git/init-gitattributes-mode ()
-  (use-package gitattributes-mode
-    :defer t))
-
-(defun git/init-gitconfig-mode ()
-  (use-package gitconfig-mode
-    :defer t))
-
-(defun git/init-gitignore-mode ()
-  (use-package gitignore-mode
+(defun git/init-git-modes ()
+  (use-package git-modes
     :defer t))
 
 (defun git/init-magit ()
